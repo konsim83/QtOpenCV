@@ -40,6 +40,8 @@ QCvWidget::setup()
     connect(ui->checkBoxEnableBinaryThreshold, SIGNAL(toggled(bool)), worker, SLOT(receiveEnableBinaryThreshold()));
     connect(ui->spinBoxBinaryThreshold, SIGNAL(valueChanged(int)), worker, SLOT(receiveBinaryThreshold(int)));
 
+    connect(ui->checkBoxEnableOpticalFlow, SIGNAL(toggled(bool)), worker, SLOT(receiveEnableOpticalFlow()));
+
     connect(thread, SIGNAL(finished()), worker, SLOT(deleteLater()));
     connect(thread, SIGNAL(finished()), workerTrigger, SLOT(deleteLater()));
     connect(thread, SIGNAL(started()), workerTrigger, SLOT(start()));

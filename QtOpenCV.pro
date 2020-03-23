@@ -29,9 +29,12 @@ SOURCES += \
         src/qcvwidget.cpp \
         src/opencvworker.cpp
 
+INCLUDEPATH += \
+        $$PWD/includes/
+
 HEADERS += \
-        include/qcvwidget.h \
-        include/opencvworker.h
+        includes/qcvwidget.h \
+        includes/opencvworker.h
 
 FORMS += \
         ui/qcvwidget.ui
@@ -40,7 +43,8 @@ LIBS += \
         -lopencv_highgui \
         -lopencv_core \
         -lopencv_imgproc \
-        -lopencv_videoio
+        -lopencv_videoio \
+        -lopencv_video
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

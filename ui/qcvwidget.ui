@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
-    <height>556</height>
+    <width>847</width>
+    <height>618</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,6 +50,13 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QCheckBox" name="checkBoxEnableOpticalFlow">
+         <property name="text">
+          <string>Optical Flow</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QPushButton" name="pushButtonPlay">
          <property name="text">
