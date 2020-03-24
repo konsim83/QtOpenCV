@@ -7,8 +7,11 @@
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
+#include <opencv2/objdetect.hpp>
 #include <opencv2/videoio.hpp>
 #include <opencv2/video.hpp>
+
+#include <iostream>
 
 
 class OpenCvWorker : public QObject
@@ -17,10 +20,13 @@ class OpenCvWorker : public QObject
 
 private:
     cv::Mat _frameOriginal_old, _frameOriginal;
+    cv::Mat _frameGray_old, _frameGray;
     cv::Mat _frameProcessed_old, _frameProcessed;
-    // Create a mask image for drawing purposes
-    cv::Mat mask;
+
     cv::VideoCapture *cap;
+
+    cv::CascadeClassifier cascade, nestedCascade;
+    const double scale = 0.9;
 
     std::vector<unsigned char> status_opt_flow;
     std::vector<float> err_opt_flow;
@@ -37,10 +43,14 @@ private:
     int binaryThreshold;
     bool opticalFlowEnable;
     bool videoRestarted;
+    bool faceDetectorEnable;
 
     void checkIfDeviceAlreadyOpened(const int device);
     void process_stream_to_optical_flow();
     void process_image_cv_to_qt();
+
+    void detectFace(cv::Mat& img, cv::Mat& mask);
+    cv::Mat mask;
 
 public:
     explicit OpenCvWorker(QObject *parent = nullptr);
@@ -57,6 +67,7 @@ public slots:
 
     void receiveEnableBinaryThreshold();
     void receiveEnableOpticalFlow();
+    void receiveEnableFaceDetector();
     void receiveBinaryThreshold(int threshold);
 };
 

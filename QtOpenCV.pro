@@ -44,7 +44,8 @@ LIBS += \
         -lopencv_core \
         -lopencv_imgproc \
         -lopencv_videoio \
-        -lopencv_video
+        -lopencv_video \
+        -lopencv_objdetect
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

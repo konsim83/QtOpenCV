@@ -8,7 +8,7 @@ QCvWidget::QCvWidget(QWidget *parent)
     , ui(new Ui::QCvWidget)
 {
     ui->setupUi(this);
-    ui->labelView->setScaledContents(true);
+    ui->labelView->setScaledContents(false);
     setup();
 }
 
@@ -41,6 +41,7 @@ QCvWidget::setup()
     connect(ui->spinBoxBinaryThreshold, SIGNAL(valueChanged(int)), worker, SLOT(receiveBinaryThreshold(int)));
 
     connect(ui->checkBoxEnableOpticalFlow, SIGNAL(toggled(bool)), worker, SLOT(receiveEnableOpticalFlow()));
+    connect(ui->checkBoxEnableFaceDetector, SIGNAL(toggled(bool)), worker, SLOT(receiveEnableFaceDetector()));
 
     connect(thread, SIGNAL(finished()), worker, SLOT(deleteLater()));
     connect(thread, SIGNAL(finished()), workerTrigger, SLOT(deleteLater()));
@@ -52,7 +53,7 @@ QCvWidget::setup()
 
     thread->start();
 
-    emit sendSetup(0);
+    emit sendSetup(2);
 }
 
 
