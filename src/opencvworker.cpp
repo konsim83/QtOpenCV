@@ -1,5 +1,5 @@
 #include "opencvworker.h"
-#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv4/opencv2/imgproc/imgproc.hpp>
 
 
 OpenCvWorker::OpenCvWorker(QObject *parent)
@@ -214,9 +214,9 @@ void OpenCvWorker::detectFace(cv::Mat& img, cv::Mat& mask)
         }
         else
             rectangle(mask,
-                      cvPoint(cvRound(r.x*scale),
+                      cv::Point(cvRound(r.x*scale),
                               cvRound(r.y*scale)),
-                      cvPoint(cvRound((r.x + r.width-1)*scale),
+                      cv::Point(cvRound((r.x + r.width-1)*scale),
                               cvRound((r.y + r.height-1)*scale)),
                       color_face,
                       3, 8, 0);

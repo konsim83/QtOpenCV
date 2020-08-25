@@ -4,9 +4,10 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui \
+            widgets
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 5)
 
 TARGET = QtOpenCV
 TEMPLATE = app
@@ -29,7 +30,7 @@ SOURCES += \
         src/qcvwidget.cpp \
         src/opencvworker.cpp
 
-INCLUDEPATH += \
+INCLUDEPATH += /usr/include/opencv4 \
         $$PWD/includes/
 
 HEADERS += \
@@ -39,7 +40,7 @@ HEADERS += \
 FORMS += \
         ui/qcvwidget.ui
 
-LIBS += \
+LIBS += -L/usr/local/lib \
         -lopencv_highgui \
         -lopencv_core \
         -lopencv_imgproc \
